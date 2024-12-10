@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4.1</title>
+</head>
+
+<body>
+
+    <h1>Завдання 4.1: Максимум серед парних елементів</h1>
+    <p id="result4"></p>
+
+    <script>
+        // Функція для знаходження максимального парного числа
+        function findMaxEven(numbers) {
+            let maxEven = -Infinity; // Початкове значення максимального парного
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0 && numbers[i] > maxEven) { // Якщо число парне та більше за поточний максимум
+                    maxEven = numbers[i]; // Оновлюємо максимальне парне
+                }
+            }
+            return maxEven; // Повертаємо знайдене максимальне парне число
+        }
+
+        // Функція для знаходження мінімального числа на парних індексах
+        function findMinEvenIndex(numbers) {
+            let minEvenIndex = Infinity; // Початкове значення мінімального числа з парними індексами
+            for (let i = 0; i < numbers.length; i += 2) { // Проходимо тільки парні індекси
+                if (numbers[i] < minEvenIndex) { // Якщо число менше за поточний мінімум
+                    minEvenIndex = numbers[i]; // Оновлюємо мінімум
+                }
+            }
+            return minEvenIndex; // Повертаємо мінімальне число
+        }
+
+        // Функція для заміни місцями максимального парного та мінімального числа з парними індексами
+        function swapMaxAndMin(numbers, maxEven, minEvenIndex) {
+            const maxIndex = numbers.indexOf(maxEven); // Знаходимо індекс максимального парного
+            const minIndex = numbers.indexOf(minEvenIndex); // Знаходимо індекс мінімального числа з парними індексами
+            [numbers[maxIndex], numbers[minIndex]] = [numbers[minIndex], numbers[maxIndex]]; // Міняємо місцями
+        }
+
+        // Основна функція для обробки масиву
+        function processArray(numbers) {
+            const maxEven = findMaxEven(numbers); // Знаходимо максимальне парне число
+            const minEvenIndex = findMinEvenIndex(numbers); // Знаходимо мінімальне число з парними індексами
+            swapMaxAndMin(numbers, maxEven, minEvenIndex); // Міняємо місцями
+            return numbers;  // Повертаємо оновлений масив
+        }
+
+        // Виклик функції та виведення результату на сторінку
+        const numbers = [2, 5, 6, 8, 10, 7, 3, 4];
+        const result = processArray(numbers);
+        document.getElementById('result4').textContent = `Updated array: ${result}`;  // Виводимо результат
+    </script>
+
+</body>
+
+</html>

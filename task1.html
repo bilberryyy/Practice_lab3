@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+</head>
+
+<body>
+
+    <h1>Завдання 1: Make Transaction</h1>
+    <p id="result1"></p> <!-- Місце для виведення результату -->
+
+    <script>
+        // Функція, яка обчислює загальну вартість і формує повідомлення
+        function makeTransaction(quantity, pricePerDroid) {
+            const totalPrice = quantity * pricePerDroid; // Обчислюємо загальну вартість
+            const message = `You ordered ${quantity} droids worth ${totalPrice} credits!`; // Формуємо повідомлення
+            return message;
+        }
+
+        // Виклик функції та виведення результату на сторінку
+        const result = makeTransaction(5, 1000);
+        document.getElementById('result1').textContent = result;  // Виводимо результат на сторінку
+    </script>
+
+</body>
+
+</html>

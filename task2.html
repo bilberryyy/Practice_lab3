@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+</head>
+
+<body>
+
+    <h1>Завдання 2: Check For Spam</h1>
+    <p id="result2"></p> <!-- Місце для виведення результату -->
+
+    <script>
+        // Функція для перевірки наявності спаму
+        function checkForSpam(message) {
+            const lowerCaseMessage = message.toLowerCase(); // Перетворюємо повідомлення в малий регістр
+            const hasSpam = lowerCaseMessage.includes("spam"); // Перевірка на "spam"
+            const hasSale = lowerCaseMessage.includes("sale"); // Перевірка на "sale"
+            return hasSpam || hasSale; // Повертаємо true, якщо є хоча б один з цих слів
+        }
+
+        // Виклик функції та виведення результату на сторінку
+        const result = checkForSpam("Get the best SALE offers now!");
+        document.getElementById('result2').textContent = `Spam detected: ${result}`;  // Виводимо результат
+    </script>
+
+</body>
+
+</html>

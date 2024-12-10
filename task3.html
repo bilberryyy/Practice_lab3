@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3</title>
+</head>
+
+<body>
+
+    <h1>Завдання 3: Filter Array</h1>
+    <p id="result3"></p> <!-- Місце для виведення результату -->
+
+    <script>
+        // Функція для фільтрації чисел, що більші за вказане значення
+        function filterArray(numbers, value) {
+            const filteredNumbers = []; // Створюємо масив для фільтрованих чисел
+            for (let i = 0; i < numbers.length; i++) { // Проходимо по всіх числах
+                if (numbers[i] > value) { // Якщо число більше за значення
+                    filteredNumbers.push(numbers[i]); // Додаємо його в результат
+                }
+            }
+            return filteredNumbers; // Повертаємо відфільтровані числа
+        }
+
+        // Виклик функції та виведення результату на сторінку
+        const numbers = [1, 5, 10, 15, 20];
+        const value = 10;
+        const result = filterArray(numbers, value);
+        document.getElementById('result3').textContent = `Filtered numbers: ${result}`;  // Виводимо результат
+    </script>
+
+</body>
+
+</html>

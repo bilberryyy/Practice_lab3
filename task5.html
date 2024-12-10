@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 5</title>
+</head>
+
+<body>
+
+    <h1>Завдання 5: Валідація даних</h1>
+    <p id="result6"></p>
+
+    <script>
+        // Функція для валідації віку
+        function validateAge(age) {
+            if (age >= 18 && age <= 100) { // Вік має бути між 18 та 100
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Функція для валідації ціни
+        function validatePrice(price) {
+            if (price > 0) { // Ціна повинна бути більше 0
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Функція для валідації дати народження (формат: dd.mm.yyyy)
+        function validateDateOfBirth(dob) {
+            const dobPattern = /^\d{2}\.\d{2}\.\d{4}$/; // Регулярний вираз для перевірки формату
+            if (dobPattern.test(dob)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Функція для валідації паролів
+        function validatePasswords(password, confirmPassword) {
+            if (password === confirmPassword) { // Паролі повинні співпадати
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Тестування функцій валідації
+        const age = 25;
+        const price = 100.5;
+        const dob = "15.08.1998";
+        const password = "password123";
+        const confirmPassword = "password123";
+
+        // Оцінка результатів валідації
+        const validationResult = (validateAge(age) && validatePrice(price) &&
+            validateDateOfBirth(dob) && validatePasswords(password, confirmPassword)) ?
+            "Всі дані правильні! Реєстрацію можна продовжувати." :
+            "Є помилки у введених даних.";
+
+        document.getElementById('result6').textContent = validationResult;  // Виводимо результат
+    </script>
+
+</body>
+
+</html>

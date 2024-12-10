@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4.2</title>
+</head>
+
+<body>
+
+    <h1>Завдання 4.2: Сортування методом вставки</h1>
+    <p id="result5"></p>
+
+    <script>
+        // Функція для сортування масиву методом вставки
+        function insertionSort(numbers) {
+            for (let i = 1; i < numbers.length; i++) { // Починаємо з другого елемента
+                const current = numbers[i]; // Зберігаємо поточне значення
+                let j = i - 1; // Переміщаємось назад по масиву
+                while (j >= 0 && numbers[j] > current) { // Якщо попередній елемент більший
+                    numbers[j + 1] = numbers[j]; // Зрушуємо його вправо
+                    j--; // Продовжуємо рухатись назад
+                }
+                numbers[j + 1] = current; // Вставляємо поточне значення на правильну позицію
+            }
+        }
+
+        // Виклик функції та виведення результату на сторінку
+        const numbersToSort = [9, 4, 6, 3, 8, 5];
+        insertionSort(numbersToSort); // Сортуємо масив
+        document.getElementById('result5').textContent = `Sorted array: ${numbersToSort}`;  // Виводимо результат
+    </script>
+
+</body>
+
+</html>
