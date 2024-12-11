@@ -10,18 +10,432 @@
 
 <body>
 
-    <h1>Лабораторна №3. Варіант 1.</h1>
-    <nav>
-        <ul>
-            <li><a href="task1.html">Завдання №1</a></li>
-            <li><a href="task2.html">Завдання №2</a></li>
-            <li><a href="task3.html">Завдання №3</a></li>
-            <li><a href="task4.html">Завдання №4.1</a></li>
-            <li><a href="task4.2.html">Завдання №4.2</a></li>
-            <li><a href="task5.html">Завдання №5</a></li>
-        </ul>
-    </nav>
+<!DOCTYPE html>
+<html lang="uk">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма реєстрації</title>
+</head>
+
+<body>
+    <div id="task-1" class="lab3-section content-section text-content">
+        <h1>Завдання №1. Варіант 9</h1>
+        <p>Введіть кількість дроїдів і їхню ціну, щоб побачити загальну вартість замовлення.</p>
+        <form id="transaction-form">
+            <label for="quantity">Кількість дроїдів:</label>
+            <input type="number" id="quantity" placeholder="Введіть кількість" required><br><br>
+
+            <label for="price">Ціна одного дроїда:</label>
+            <input type="number" id="price" placeholder="Введіть ціну" required><br><br>
+
+            <button type="button" onclick="handleTransaction()">Розрахувати</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Функція makeTransaction
+        function makeTransaction(quantity, pricePerDroid) {
+            const totalPrice = quantity * pricePerDroid;
+            const message = `Ви замовили ${quantity} дроїдів на суму ${totalPrice} кредитів!`;
+            return message;
+        }
+
+        // Обробник натискання кнопки
+        function handleTransaction() {
+            const quantityInput = document.getElementById('quantity');
+            const priceInput = document.getElementById('price');
+            const resultDiv = document.getElementById('result');
+
+            const quantity = Number(quantityInput.value);
+            const price = Number(priceInput.value);
+
+            // Перевірка коректності введених даних
+            if (quantity <= 0 || price <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть дійсні значення!';
+                return;
+            }
+
+            // Виклик функції і відображення результату
+            const resultMessage = makeTransaction(quantity, price);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = resultMessage;
+        }
+    </script>
+    <div id="task-2" class="lab3-section content-section text-content">
+        <h1>Завдання №2. Варіант 9</h1>
+        <p>Перевірте текст на наявність заборонених слів "spam" або "sale".</p>
+        <form id="spam-check-form">
+            <label for="message">Текст для перевірки:</label><br>
+            <textarea id="message" placeholder="Введіть текст для перевірки" rows="4" cols="50"></textarea><br><br>
+            <button type="button" onclick="handleSpamCheck()">Перевірити</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Функція checkForSpam
+        function checkForSpam(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            const hasSpam = lowerCaseMessage.includes("spam");
+            const hasSale = lowerCaseMessage.includes("sale");
+            return hasSpam || hasSale;
+        }
+
+        // Обробник натискання кнопки
+        function handleSpamCheck() {
+            const messageInput = document.getElementById('message');
+            const resultDiv = document.getElementById('result');
+
+            const message = messageInput.value.trim();
+
+            if (!message) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть текст для перевірки!';
+                return;
+            }
+
+            // Виклик функції і відображення результату
+            const isSpam = checkForSpam(message);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = isSpam
+                ? 'Текст містить заборонені слова (spam або sale).'
+                : 'Текст не містить заборонених слів.';
+        }
+    </script>
+    <div id="task-3" class="lab3-section content-section text-content">
+        <h1>Завдання №3. Варіант 9</h1>
+        <p>Фільтруйте масив чисел за допомогою введеного значення.</p>
+        <form id="filter-form">
+            <label for="numbers">Масив чисел (через кому):</label><br>
+            <input type="text" id="numbers" placeholder="Наприклад: 1, 5, 10, 15, 20"><br><br>
+            <label for="filter-value">Значення для фільтрації:</label><br>
+            <input type="number" id="filter-value" placeholder="Наприклад: 10"><br><br>
+            <button type="button" onclick="handleFilterArray()">Фільтрувати</button>
+        </form>
+
+        <div id="filter-result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Функція checkForSpam
+        function checkForSpam(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            const hasSpam = lowerCaseMessage.includes("spam");
+            const hasSale = lowerCaseMessage.includes("sale");
+            return hasSpam || hasSale;
+        }
+
+        // Обробник натискання кнопки
+        function handleSpamCheck() {
+            const messageInput = document.getElementById('message');
+            const resultDiv = document.getElementById('result');
+
+            const message = messageInput.value.trim();
+
+            if (!message) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть текст для перевірки!';
+                return;
+            }
+
+            // Виклик функції і відображення результату
+            const isSpam = checkForSpam(message);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = isSpam
+                ? 'Текст містить заборонені слова (spam або sale).'
+                : 'Текст не містить заборонених слів.';
+        }
+
+        // Функція filterArray
+        function filterArray(numbers, value) {
+            const filteredNumbers = [];
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] > value) {
+                    filteredNumbers.push(numbers[i]);
+                }
+            }
+            return filteredNumbers;
+        }
+
+        // Обробник для фільтрації масиву
+        function handleFilterArray() {
+            const numbersInput = document.getElementById('numbers');
+            const filterValueInput = document.getElementById('filter-value');
+            const resultDiv = document.getElementById('filter-result');
+
+            const numbers = numbersInput.value.split(',').map(num => parseFloat(num.trim()));
+            const value = parseFloat(filterValueInput.value);
+
+            if (numbers.some(isNaN) || isNaN(value)) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть коректні дані для масиву чисел і значення!';
+                return;
+            }
+
+            const filteredNumbers = filterArray(numbers, value);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = `Результат фільтрації: [${filteredNumbers.join(', ')}]`;
+        }
+    </script>
+
+    <div id="task-4" class="lab3-section content-section text-content">
+        <h1>Завдання №4(1,2). Варіант 9</h1>
+
+        <h2>Підпункт 1</h2>
+        <p>Робота з масивами: знаходження максимального серед парних елементів та мінімального серед елементів з парними
+            індексами.</p>
+
+        <input type="text" id="array-input" placeholder="Введіть масив через кому" />
+        <button onclick="processArray()">Обробити масив</button>
+        <div id="array-result"></div>
+
+        <h2>Підпункт 2</h2>
+        <p>Сортування масиву методом вставки.</p>
+
+        <input type="text" id="sort-input" placeholder="Введіть масив для сортування" />
+        <button onclick="sortArray()">Сортувати масив</button>
+        <div id="sort-result"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Функція для обробки масиву
+            function findMaxEven(numbers) {
+                let maxEven = -Infinity;
+                for (let i = 0; i < numbers.length; i++) {
+                    if (numbers[i] % 2 === 0 && numbers[i] > maxEven) {
+                        maxEven = numbers[i];
+                    }
+                }
+                return maxEven;
+            }
+
+            function findMinEvenIndex(numbers) {
+                let minEvenIndex = Infinity;
+                for (let i = 0; i < numbers.length; i += 2) {
+                    if (numbers[i] < minEvenIndex) {
+                        minEvenIndex = numbers[i];
+                    }
+                }
+                return minEvenIndex;
+            }
+
+            function swapMaxAndMin(numbers, maxEven, minEvenIndex) {
+                const maxIndex = numbers.indexOf(maxEven);
+                const minIndex = numbers.indexOf(minEvenIndex);
+                [numbers[maxIndex], numbers[minIndex]] = [numbers[minIndex], numbers[maxIndex]];
+            }
+
+            function processArray() {
+                const input = document.getElementById("array-input").value;
+                const numbers = input.split(',').map(Number);
+                const maxEven = findMaxEven(numbers);
+                const minEvenIndex = findMinEvenIndex(numbers);
+
+                // Вивести результат на сторінку
+                const resultDiv = document.getElementById("array-result");
+                resultDiv.textContent = `Максимум серед парних: ${maxEven}, Мінімум серед елементів з парними індексами: ${minEvenIndex}`;
+
+                swapMaxAndMin(numbers, maxEven, minEvenIndex);
+                resultDiv.textContent += `, Масив після обміну: [${numbers.join(', ')}]`;
+            }
+
+            // Функція для сортування масиву методом вставки
+            function insertionSort(numbers) {
+                for (let i = 1; i < numbers.length; i++) {
+                    const current = numbers[i];
+                    let j = i - 1;
+
+                    while (j >= 0 && numbers[j] > current) {
+                        numbers[j + 1] = numbers[j];
+                        j--;
+                    }
+
+                    numbers[j + 1] = current;
+                }
+            }
+
+            function sortArray() {
+                const input = document.getElementById("sort-input").value;
+                const numbers = input.split(',').map(Number);
+
+                insertionSort(numbers);
+
+                // Вивести результат сортування на сторінку
+                const resultDiv = document.getElementById("sort-result");
+                resultDiv.textContent = `Масив після сортування: [${numbers.join(', ')}]`;
+            }
+        });
+    </script>
+
+    <script>
+        // Функція checkForSpam
+        function checkForSpam(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            const hasSpam = lowerCaseMessage.includes("spam");
+            const hasSale = lowerCaseMessage.includes("sale");
+            return hasSpam || hasSale;
+        }
+
+        // Обробник натискання кнопки
+        function handleSpamCheck() {
+            const messageInput = document.getElementById('message');
+            const resultDiv = document.getElementById('result');
+
+            const message = messageInput.value.trim();
+
+            if (!message) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть текст для перевірки!';
+                return;
+            }
+
+            // Виклик функції і відображення результату
+            const isSpam = checkForSpam(message);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = isSpam
+                ? 'Текст містить заборонені слова (spam або sale).'
+                : 'Текст не містить заборонених слів.';
+        }
+
+        // Обробник для фільтрації масиву
+        function handleFilterArray() {
+            const arrayInput = document.getElementById('array-input');
+            const filterValueInput = document.getElementById('filter-value');
+            const resultDiv = document.getElementById('filter-result');
+
+            const array = arrayInput.value.split(',').map(Number);
+            const filterValue = Number(filterValueInput.value);
+
+            if (!array.length || isNaN(filterValue)) {
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = 'Будь ласка, введіть коректні дані!';
+                return;
+            }
+
+            const filteredArray = array.filter(num => num > filterValue);
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = `Числа більші за ${filterValue}: [${filteredArray.join(', ')}]`;
+        }
+    </script>
+
+    <div id="task-5" class="lab3-section content-section text-content">
+        <h1>Завдання №5. Варіант 9</h1>
+        <p>Перевірка введених даних: вік, ціна, дата народження та паролі.</p>
+
+        <!-- Форма для перевірки даних -->
+        <form id="data-form">
+            <label for="age">Вік (18-100):</label>
+            <input type="number" id="age" name="age" min="18" max="100" required>
+            <br><br>
+
+            <label for="price">Ціна (додатнє число):</label>
+            <input type="number" id="price" name="price" min="0" required>
+            <br><br>
+
+            <label for="dob">Дата народження (DD.MM.YYYY):</label>
+            <input type="text" id="dob" name="dob" placeholder="DD.MM.YYYY" required>
+            <br><br>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+
+            <label for="confirm-password">Підтвердження пароля:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <br><br>
+
+            <button type="button" onclick="validateForm()">Перевірити дані</button>
+        </form>
+
+        <div id="validation-result"></div>
+    </div>
+
+    <script>
+        function validateAge(age) {
+            if (age >= 18 && age <= 100) {
+                return true;
+            } else {
+                return "Вік повинен бути між 18 та 100 роками.";
+            }
+        }
+
+        function validatePrice(price) {
+            if (price > 0) {
+                return true;
+            } else {
+                return "Ціна повинна бути додатнім числом.";
+            }
+        }
+
+        function validateDateOfBirth(dob) {
+            const dobPattern = /^\d{2}\.\d{2}\.\d{4}$/;
+            if (dobPattern.test(dob)) {
+                return true;
+            } else {
+                return "Дата народження повинна бути в форматі DD.MM.YYYY.";
+            }
+        }
+
+        function validatePasswords(password, confirmPassword) {
+            if (password === confirmPassword) {
+                return true;
+            } else {
+                return "Паролі не співпадають!";
+            }
+        }
+
+        function validateForm() {
+            const age = document.getElementById("age").value;
+            const price = document.getElementById("price").value;
+            const dob = document.getElementById("dob").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            const resultDiv = document.getElementById("validation-result");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = ""; // Clear previous results
+
+            let errors = [];
+
+            const ageValidation = validateAge(age);
+            if (ageValidation !== true) {
+                errors.push(ageValidation);
+            }
+
+            const priceValidation = validatePrice(price);
+            if (priceValidation !== true) {
+                errors.push(priceValidation);
+            }
+
+            const dobValidation = validateDateOfBirth(dob);
+            if (dobValidation !== true) {
+                errors.push(dobValidation);
+            }
+
+            const passwordValidation = validatePasswords(password, confirmPassword);
+            if (passwordValidation !== true) {
+                errors.push(passwordValidation);
+            }
+
+            if (errors.length > 0) {
+                resultDiv.innerHTML = "Помилки у введених даних:<br>" + errors.join("<br>");
+            } else {
+                resultDiv.innerHTML = "Всі дані правильні! Реєстрацію можна продовжувати.";
+            }
+        }
+    </script>
+
+    </div>
+</body>
+
+</html>
 </body>
 
 </html>
